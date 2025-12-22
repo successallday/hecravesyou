@@ -1,0 +1,44 @@
+---
+import BaseLayout from "../layouts/BaseLayout.astro";
+---
+<BaseLayout title="He Craves You">
+
+<header style="
+  height:100vh;
+  background:url('/images/rainman.jpg') center/cover no-repeat;
+  position:relative;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  text-align:center;
+">
+  <div style="position:relative;z-index:2;max-width:600px;">
+    <h1 style="font-size:2.6rem;line-height:1.3;">
+      Once you understand him, he starts chasing you.
+    </h1>
+    <a href="https://hecravesyou.com/quiz" class="cta">Take the Quiz</a>
+  </div>
+  <div style="position:absolute;inset:0;background:rgba(0,0,0,.55);"></div>
+</header>
+
+<section style="padding:6rem 1.5rem;max-width:900px;margin:auto;text-align:center;">
+  <h2>He’s not confusing. You’re just reading the wrong language.</h2>
+  <p style="font-family:var(--font-sans);color:rgba(255,255,255,.75);">
+    Calm decoding of how men think, feel, and pull away.
+  </p>
+</section>
+
+<section style="padding:6rem 1.5rem;text-align:center;">
+  <img src="/images/woman.jpg" style="max-width:600px;width:100%;border-radius:6px;" />
+  <a href="https://hecravesyou.com/quiz" class="cta">Start the Free Quiz</a>
+</section>
+
+<section style="padding:6rem 1.5rem;text-align:center;">
+  <img src="/images/mrcraves.jpg" style="width:260px;border-radius:50%;" />
+  <h2>A former manipulator turned translator.</h2>
+  <p style="font-family:var(--font-sans);color:rgba(255,255,255,.8);max-width:650px;margin:auto;">
+    Calm. Honest. Direct.
+  </p>
+</section>
+
+</BaseLayout>
