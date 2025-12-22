@@ -1,0 +1,141 @@
+---
+/* No JS needed here */
+---
+
+<style>
+  :root {
+    --pink:#e63973;
+    --pink-dark:#b1124c;
+    --yes:#1e4bb8;
+    --yes-shadow:#122d6d;
+    --no:#e63973;
+    --no-shadow:#8b2449;
+    --yellow:#ffcc00;
+    --yellow-shadow:#c79b00;
+    --hero-max:900px;
+    --quiz-max:760px;
+  }
+
+  body {
+    margin:0;
+    font-family:"Georgia",serif;
+    color:#222;
+    background:url("/images/sunset.jpg") no-repeat center center fixed;
+    background-size:cover;
+  }
+
+  .overlay {
+    background:rgba(0,0,0,.30);
+    min-height:100vh;
+    display:flex;
+    flex-direction:column;
+    align-items:center;
+    padding-bottom:60px;
+  }
+
+  /* REST OF YOUR CSS — UNCHANGED */
+</style>
+
+<div class="overlay">
+  <section class="top-box">
+    <h1 class="top-title">What Men Secretly Crave</h1>
+    <img class="top-image" src="/images/valentines.jpg" alt="Couple" />
+    <div class="top-copy">
+      <p>There’s a deep-rooted gap in communication that few truly understand.</p>
+      <p>Find out how this hidden instinct is shaping your relationship below:</p>
+    </div>
+  </section>
+
+  <div class="underline"></div>
+  <div class="triangle"></div>
+
+  <div id="quiz" class="quiz-box"></div>
+
+  <footer>
+    © 2025 He Craves You —
+    <a href="/privacy/">Privacy</a> •
+    <a href="/terms/">Terms</a>
+  </footer>
+</div>
+
+<!-- Facebook Pixel -->
+<script is:inline>
+!function(f,b,e,v,n,t,s){if(f.fbq)return;n=f.fbq=function(){
+n.callMethod? n.callMethod.apply(n,arguments):n.queue.push(arguments)};
+if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';
+n.queue=[];t=b.createElement(e);t.async=!0;
+t.src=v;s=b.getElementsByTagName(e)[0];
+s.parentNode.insertBefore(t,s)}(window, document,'script',
+'https://connect.facebook.net/en_US/fbevents.js');
+fbq('init', '1862401998043857');
+fbq('track', 'PageView');
+</script>
+
+<!-- TikTok Pixel -->
+<script is:inline>
+!function (w, d, t) {
+  w.TiktokAnalyticsObject=t;
+  var ttq=w[t]=w[t]||[];
+  ttq.methods=["page","track"];
+  ttq.load=function(e){
+    var s=d.createElement("script");
+    s.async=true;
+    s.src="https://analytics.tiktok.com/i18n/pixel/events.js?sdkid="+e;
+    d.head.appendChild(s);
+  };
+  ttq.load('D42KPMJC77U9LG1FT7H0');
+  ttq.page();
+}(window, document, 'ttq');
+</script>
+
+<script is:inline>
+const questions = [
+  "Have you been emotionally invested in him for a while now?",
+  "When you pull back a little, does he chase you or disappear?",
+  "When you stop trying, does he step up or fade out?",
+  "Are you wanting something real and long-term?"
+];
+
+let step = 0;
+
+function renderQuestion() {
+  const box = document.getElementById("quiz");
+  if (!box) return;
+
+  if (step < questions.length) {
+    box.innerHTML = `
+      <h2>Question ${step + 1} of 4</h2>
+      <p>${questions[step]}</p>
+      <div class="button-row">
+        <button class="yes-btn">YES</button>
+        <button class="no-btn">NO</button>
+      </div>
+    `;
+  } else {
+    box.innerHTML = `
+      <h2>Congratulations</h2>
+      <p>You’ve seen how men think.</p>
+      <button class="cta-btn">SHOW ME THE VIDEO</button>
+    `;
+  }
+}
+
+document.addEventListener("click", e => {
+  if (e.target.matches(".yes-btn,.no-btn")) {
+    step++;
+    renderQuestion();
+    if (!window.leadTracked) {
+      fbq('track', 'Lead');
+      window.leadTracked = true;
+    }
+  }
+
+  if (e.target.matches(".cta-btn")) {
+    fbq('track', 'Purchase');
+    window.location.href =
+      "https://hop.clickbank.net/?affiliate=jake8099&vendor=hissecret&lp=0";
+  }
+});
+
+window.onload = renderQuestion;
+</script>
