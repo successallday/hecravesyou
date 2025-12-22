@@ -1,0 +1,189 @@
+---
+/* No frontmatter needed */
+---
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Decode His Desire</title>
+
+  <style>
+    :root {
+      --pink:#e63973;
+      --pink-dark:#b1124c;
+      --yes:#1e4bb8;
+      --yes-shadow:#122d6d;
+      --no:#e63973;
+      --no-shadow:#8b2449;
+      --hero-max:900px;
+      --quiz-max:760px;
+    }
+
+    body {
+      margin:0;
+      font-family:"Georgia",serif;
+      color:#fff;
+      background:url("/images/sunset.jpg") no-repeat center center fixed;
+      background-size:cover;
+    }
+
+    .overlay {
+      background:rgba(0,0,0,.6);
+      min-height:100vh;
+      display:flex;
+      flex-direction:column;
+      align-items:center;
+      padding-bottom:60px;
+    }
+
+    .top-box {
+      width:100%;
+      max-width:var(--hero-max);
+      margin:40px auto 0;
+      background:#000;
+      border-radius:6px;
+      box-shadow:0 2px 10px rgba(0,0,0,.6);
+      display:grid;
+      grid-template-columns:1fr 1fr;
+    }
+
+    .top-title {
+      grid-column:2;
+      padding:26px 30px 10px;
+      font-size:28px;
+    }
+
+    .top-copy {
+      grid-column:2;
+      padding:0 30px 28px;
+    }
+
+    .top-copy p {
+      color:#ddd;
+      font-size:17px;
+      line-height:1.55;
+    }
+
+    .top-image {
+      grid-column:1;
+      grid-row:1 / span 2;
+      width:100%;
+      height:100%;
+      object-fit:cover;
+    }
+
+    .underline {
+      height:5px;
+      width:100%;
+      max-width:var(--hero-max);
+      background:var(--pink);
+    }
+
+    .triangle {
+      width:0;height:0;
+      border-left:60px solid transparent;
+      border-right:60px solid transparent;
+      border-top:35px solid var(--pink-dark);
+    }
+
+    .quiz-box {
+      background:#111;
+      width:90%;
+      max-width:var(--quiz-max);
+      border-radius:8px;
+      padding:50px 30px;
+      text-align:center;
+      transition:opacity .9s ease;
+    }
+
+    .quiz-box.fade-out{opacity:0;}
+    .quiz-box.fade-in{opacity:1;}
+
+    .button-row {
+      display:flex;
+      gap:18px;
+      justify-content:center;
+    }
+
+    .button-row button {
+      padding:18px;
+      border-radius:12px;
+      border:0;
+      font-size:20px;
+      font-weight:bold;
+      cursor:pointer;
+      color:#fff;
+    }
+
+    .yes-btn{ background:var(--yes); box-shadow:0 4px var(--yes-shadow); }
+    .no-btn { background:var(--no); box-shadow:0 4px var(--no-shadow); }
+
+    footer {
+      background:#000;
+      color:#999;
+      font-size:13px;
+      text-align:center;
+      padding:35px 10px 45px;
+      width:100%;
+      margin-top:40px;
+      border-top:1px solid #222;
+    }
+  </style>
+</head>
+
+<div class="overlay">
+  <section class="top-box">
+    <h1 class="top-title">Decode His Desire</h1>
+    <img class="top-image" src="/images/valentines.jpg" alt="Couple">
+    <div class="top-copy">
+      <p>Every man speaks desire in a secret language.</p>
+      <p>Answer honestly. Each question reveals more.</p>
+    </div>
+  </section>
+
+  <div class="underline"></div>
+  <div class="triangle"></div>
+
+  <div id="quiz" class="quiz-box"></div>
+
+  <footer>
+    © 2025 He Craves You •
+    <a href="/privacy">Privacy</a> •
+    <a href="/terms">Terms</a> •
+    <a href="/contact">Contact</a>
+  </footer>
+</div>
+
+<script is:inline>
+  const questions = [
+    "Do you feel like he pulls away when you get closer?",
+    "Do you wonder if he feels as deeply as you do?",
+    "Does he go silent after being affectionate?",
+    "Do you replay his words for hidden meaning?",
+    "Ready to decode his desire?"
+  ];
+
+  let step = 0;
+
+  function renderQuestion() {
+    const box = document.getElementById("quiz");
+    box.innerHTML = `
+      <h2>Question ${step + 1} of ${questions.length}</h2>
+      <p>${questions[step]}</p>
+      <div class="button-row">
+        <button class="yes-btn">YES</button>
+        <button class="no-btn">NO</button>
+      </div>
+    `;
+  }
+
+  document.addEventListener("click", e => {
+    if (e.target.matches(".yes-btn, .no-btn")) {
+      step++;
+      if (step < questions.length) renderQuestion();
+      else box.innerHTML = "<h2>Results unlocked.</h2>";
+    }
+  });
+
+  window.onload = renderQuestion;
+</script>
