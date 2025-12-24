@@ -22,7 +22,7 @@
 
     body {
       margin:0;
-      font-family:"Georgia",serif;
+      font-family:Georgia, serif;
       color:#fff;
       background:url("/images/sunset.jpg") no-repeat center center fixed;
       background-size:cover;
@@ -37,6 +37,7 @@
       padding-bottom:60px;
     }
 
+    /* ---------- HERO ---------- */
     .top-box {
       width:100%;
       max-width:var(--hero-max);
@@ -47,17 +48,14 @@
       overflow:hidden;
       display:grid;
       grid-template-columns:1fr 1fr;
-      grid-template-rows:auto auto;
     }
 
     .top-title {
-      grid-column:2;
       padding:26px 30px 10px;
       font-size:28px;
     }
 
     .top-copy {
-      grid-column:2;
       padding:0 30px 28px;
     }
 
@@ -69,12 +67,9 @@
     }
 
     .top-image {
-      grid-column:1;
-      grid-row:1 / span 2;
       width:100%;
       height:100%;
       object-fit:cover;
-      display:block;
     }
 
     .underline {
@@ -90,64 +85,81 @@
       border-left:60px solid transparent;
       border-right:60px solid transparent;
       border-top:35px solid var(--pink-dark);
-      margin-top:-1px;
     }
 
+    /* ---------- QUIZ ---------- */
     .quiz-box {
       background:#111;
-      width:90%;
+      width:92%;
       max-width:var(--quiz-max);
+      border-radius:10px;
+      padding:50px 28px;
       margin-top:0;
-      border-radius:8px;
-      box-shadow:0 4px 15px rgba(0,0,0,.5);
       text-align:center;
-      padding:50px 30px;
-      position:relative;
-      transition:opacity .9s ease;
-      opacity:1;
+      box-shadow:0 4px 15px rgba(0,0,0,.5);
+      opacity:0;
+      transform:translateY(12px);
+      transition:
+        opacity 0.8s ease,
+        transform 0.8s ease;
     }
 
-    .quiz-box.fade-out { opacity:0; }
-    .quiz-box.fade-in { opacity:1; }
+    .quiz-box.show {
+      opacity:1;
+      transform:translateY(0);
+    }
 
     .quiz-box h2 {
-      margin:0 0 22px;
+      margin:0 0 18px;
+      font-size:22px;
     }
 
     .quiz-box p {
       font-size:18px;
       line-height:1.55;
-      margin:0 0 26px;
+      margin:0 0 30px;
     }
 
+    /* ---------- BUTTONS ---------- */
     .button-row {
       display:flex;
-      justify-content:center;
       gap:18px;
-      flex-wrap:nowrap;
+      justify-content:center;
+      flex-wrap:wrap;
     }
 
     .button-row button {
       flex:1 1 45%;
-      max-width:200px;
-      padding:18px;
-      border:0;
-      border-radius:12px;
+      max-width:220px;
+      padding:18px 16px;
       font-size:20px;
-      font-weight:bold;
-      color:#fff;
+      font-weight:700;
+      border-radius:14px;
+      border:none;
       cursor:pointer;
-      transition:transform .15s ease,opacity .15s ease;
+      color:#fff;
+      transition:
+        transform .15s ease,
+        box-shadow .15s ease,
+        opacity .15s ease;
     }
 
-    .button-row button:hover {
-      transform:scale(1.05);
-      opacity:.95;
+    .button-row button:active {
+      transform:translateY(3px);
+      box-shadow:0 1px rgba(0,0,0,.4);
     }
 
-    .yes-btn { background:var(--yes); box-shadow:0 4px var(--yes-shadow); }
-    .no-btn  { background:var(--no);  box-shadow:0 4px var(--no-shadow); }
+    .yes-btn {
+      background:linear-gradient(#2a63ff, var(--yes));
+      box-shadow:0 6px var(--yes-shadow);
+    }
 
+    .no-btn {
+      background:linear-gradient(#ff5f9a, var(--no));
+      box-shadow:0 6px var(--no-shadow);
+    }
+
+    /* ---------- FOOTER ---------- */
     footer {
       background:#000;
       color:#999;
@@ -160,112 +172,129 @@
       line-height:1.5;
     }
 
-    footer a { color:var(--pink); text-decoration:none; }
-    footer a:hover { text-decoration:underline; }
+    footer a {
+      color:var(--pink);
+      text-decoration:none;
+    }
 
-    /* 🔥 MOBILE — LOCKED & SAFE */
-    @media (max-width:768px){
+    footer a:hover {
+      text-decoration:underline;
+    }
+
+    /* ---------- MOBILE ---------- */
+    @media (max-width:768px) {
       .top-box {
         grid-template-columns:1fr;
-        grid-template-rows:auto auto auto;
-        border-radius:0;
         margin:0;
+        border-radius:0;
       }
 
       .top-title {
-        grid-column:1;
         font-size:22px;
         padding:20px 16px 8px;
       }
 
       .top-image {
-        grid-column:1;
-        grid-row:2;
         height:220px;
       }
 
       .top-copy {
-        grid-column:1;
-        padding:10px 16px 16px;
+        padding:10px 16px 18px;
       }
 
       .quiz-box {
-        width:95%;
-        padding:35px 20px 50px;
+        padding:36px 20px 44px;
+      }
+
+      .button-row button {
+        max-width:none;
+        font-size:18px;
       }
     }
   </style>
 </head>
 
 <body>
-<div class="overlay">
+  <div class="overlay">
 
-  <section class="top-box">
-    <h1 class="top-title">Decode His Desire</h1>
-    <img class="top-image" src="/images/valentines.jpg" alt="Couple">
-    <div class="top-copy">
-      <p>Every man speaks desire in a secret language.</p>
-      <p>Answer honestly — each question reveals more.</p>
-    </div>
-  </section>
+    <section class="top-box">
+      <div>
+        <h1 class="top-title">Decode His Desire</h1>
+        <div class="top-copy">
+          <p>Every man speaks desire in a secret language.</p>
+          <p>Answer honestly. Each question brings clarity.</p>
+        </div>
+      </div>
+      <img class="top-image" src="/images/valentines.jpg" alt="Couple">
+    </section>
 
-  <div class="underline"></div>
-  <div class="triangle"></div>
+    <div class="underline"></div>
+    <div class="triangle"></div>
 
-  <div id="quiz" class="quiz-box"></div>
+    <div id="quiz" class="quiz-box"></div>
 
-  <footer>
-    © 2025 He Craves You •
-    <a href="/privacy">Privacy</a> •
-    <a href="/terms">Terms</a> •
-    <a href="/contact">Contact</a>
-  </footer>
-</div>
+    <footer>
+      © 2025 He Craves You •
+      <a href="/privacy">Privacy</a> •
+      <a href="/terms">Terms</a> •
+      <a href="/contact">Contact</a>
+    </footer>
 
-<script is:inline>
-  const questions = [
-    "Do you feel like he pulls away when you get closer?",
-    "Do you wonder if he feels as deeply as you do?",
-    "Does he go silent after being affectionate?",
-    "Do you replay his words for hidden meaning?",
-    "Ready to decode his desire?"
-  ];
+  </div>
 
-  let step = 0;
-  const box = document.getElementById("quiz");
+  <script is:inline>
+    const questions = [
+      "Do you feel like he pulls away when you get closer?",
+      "Do you wonder if he feels as deeply as you do?",
+      "Does he go silent after being affectionate?",
+      "Do you replay his words looking for meaning?",
+      "Does his attention come in waves?",
+      "Ready to decode his desire?"
+    ];
 
-  function renderQuestion() {
-    box.classList.remove("fade-in");
-    box.classList.add("fade-out");
+    let step = 0;
+    let score = 0;
 
-    setTimeout(() => {
-      if (step < questions.length) {
-        box.innerHTML = `
-          <h2>Question ${step + 1} of ${questions.length}</h2>
-          <p>${questions[step]}</p>
-          <div class="button-row">
-            <button class="yes-btn">YES</button>
-            <button class="no-btn">NO</button>
-          </div>
-        `;
-      } else {
-        box.innerHTML = "<h2>Results unlocked.</h2>";
-      }
+    const quiz = document.getElementById("quiz");
 
-      box.classList.remove("fade-out");
-      box.classList.add("fade-in");
-    }, 500);
-  }
+    function render() {
+      quiz.classList.remove("show");
 
-  document.addEventListener("click", e => {
-    if (e.target.classList.contains("yes-btn") || e.target.classList.contains("no-btn")) {
-      step++;
-      renderQuestion();
+      setTimeout(() => {
+        if (step < questions.length) {
+          quiz.innerHTML = `
+            <h2>Question ${step + 1} of ${questions.length}</h2>
+            <p>${questions[step]}</p>
+            <div class="button-row">
+              <button class="yes-btn">YES</button>
+              <button class="no-btn">NO</button>
+            </div>
+          `;
+        } else {
+          quiz.innerHTML = `
+            <h2>Your pattern is clear</h2>
+            <p>You answered YES to ${score} out of ${questions.length}.</p>
+            <p>This means his desire is being expressed — just not in words.</p>
+          `;
+        }
+
+        quiz.classList.add("show");
+      }, 400);
     }
-  });
 
-  window.addEventListener("load", renderQuestion);
-</script>
+    document.addEventListener("click", e => {
+      if (e.target.classList.contains("yes-btn")) {
+        score++;
+        step++;
+        render();
+      }
+      if (e.target.classList.contains("no-btn")) {
+        step++;
+        render();
+      }
+    });
 
+    window.onload = render;
+  </script>
 </body>
 </html>
